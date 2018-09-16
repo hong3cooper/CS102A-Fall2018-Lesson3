@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ECE160 - Lesson 2 - Github, Types, Variables, Operations</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>ECE160 - Lesson 2</h1>
+					<h3>Github, Types, Variables, Operators</h3>
+					<p>
+						<small>Instructor: Professor Hong</small>
+					</p>
+					
+				</section>
+			
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Intro to Github
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Setting Up Your Git Environment & SSH Keys
+							Setting up your github user name and email:
+							```
+							$ git config --global user.name "Your Name"
+							$ git config --global user.email "yourEmail.cooper.edu"
+							```
+							Set up your ssh key:
+							```
+							$ ssh-keygen -C "me@cooper.edu" -t rsa 
+							```
+							Click enter when prompted.
+							
+							
+							</a>
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							Copy the key and put it in your github account settings.  
+							```
+							$ cat .ssh/id_rsa.pub
+							```
+							* To access account settings, click your icon => Settings.  
+							* Then, click on SSH and GPG keys. Create a new key.
+							* Paste the output of the cat command into github.
+							
+							More info can be found here: 
+							<a href="https://help.github.com/articles/connecting-to-github-with-ssh/">
+							https://help.github.com/articles/connecting-to-github-with-ssh/
+							</a>
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a repo for hello.c
+							* Go to github.com
+							* Create a new repository and initialize with a README
+							* Clone with SSH and copy the link and run the following
+							```
+							$ git clone git@github.com:yourUserName/repoName.git
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a separate branch
+							* To create a separate branch:
+							```
+							$ git checkout -b helloBranch
+							$ git branch
+							```
+							* Copy your hello.c file into the directory and add and commit it with:
+							```
+							$ git status
+							$ git add hello.c
+							$ git status
+							$ git commit -m "first commit"
+							$ git status
+							```
+							* Now push your branch to github:
+							```
+							$ git push origin helloBranch
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Creating a Pull Request & Merging to Master
+							* Go to the main github page and create a new pull request.
+							* The first branch is what you're merging into.
+							* Add some comments and click "Create pull request"
+							* You can now do a code review in the Files changed tab
+							* Lastly, click "Merge pull request" to merge it to the master branch.
+							* For HW, do not click "Merge pull request".
+						</script>
+					</section>
+				</section>
+					
+				<section>
+					<section data-markdown>
+						<script type="text/template">
+							## Types, Variables, Operations
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Types
+							```
+							char a; // a single byte
+							int i; // an integer; max is based on machine
+							float f; // single-precision floating point number
+							double d; // double-precision floating point number
+							short int si; // decreases the size of an int; int can be omitted
+							long int li; // increase the size of an int; int can be omitted
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Variables - Restrictions
+							* Begins with a letter
+							* Consists of letters and numbers
+							* The understore "_" counts as a letter
+							* Case sensitive
+							* Use lower case for variable names & all caps for constants
+							* Cannot use reserved keywords
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Variables - Best Practices
+							* When giving variable names, please provide good variable names.
+							
+							```
+							char a;
+							int aa;
+							short aaa; // these are bad!
+							
+							char firstInitial;
+							int totalMilesTravelled;
+							short currentFlightMiles;
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Constants
+							* Numbers are constants  
+							
+							```
+							int a = 1234; // no suffix
+							long l = 123456789L; // suffix of l or L
+							unsigned long ul = 123456789U; // suffix of u, U, ul, or UL
+							double d = 1.234;
+							float f = 1.234f; // suffix of f or F
+							long double ld = 1.234l; // suffix of l or L
+							
+							int octal = 037; // decimal 31
+							int hex = 0x1f // decimal 31
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## More constants
+							* You can create constants with #define
+							
+							```
+							#include <stdio.h>
+							#define PI 3.14
+							
+							void main()
+							{
+								int radius = 2;
+								float area = PI * radius * radius;
+								printf("%f", area);
+								return;
+							}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Enums
+							* You can create constants with enum
+							
+							```
+							#include <stdio.h>
+							
+							enum daysOfTheWeek {
+								SUN = 0,
+								MON = 1,
+								TUE = 2,
+								WED = 3,
+								THU = 4,
+								FRI = 5,
+								SAT = 6
+							};
+							
+							void main()
+							{
+								enum daysOfTheWeek day;
+								day = MON;
+								printf("%d", day);
+								return;
+							}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Operations
+							* PEMDAS
+							  * Parentheses
+							  * Exponents
+							  * Multiplication & Division
+							  * Addition & Subtraction
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Example
+							* Convert 35&deg;F to &deg;C.  
+							
+							```
+#include <stdio.h>
+
+/* Prints the conversion of a given Fahrenheit to Celsius */
+
+void main()
+{
+    int fahr = 35;
+    int celsius;
+    celsius = 5 * (fahr-32) / 9;
+    printf("%d\n", celsius);
+
+    return;
+}
+							```
+						</script>
+					</section>
+					
+					<section data-markdown>
+						<script type="text/template">
+							## Try it out!
+							* Convert 22&deg;C to &deg;F.
+						</script>
+					</section>
+				</section>
+					
+				<section data-markdown>
+					<script type="text/template">
+						## Homework
+						<a href="TBD">
+						TBD
+						</a>
+						due 09/18 @ 11:59PM
+					</script>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
