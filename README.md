@@ -1,1 +1,1 @@
-# ECE160-Lesson3
+# CS102A-Lesson3
